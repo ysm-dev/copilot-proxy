@@ -9,6 +9,7 @@ export const app: Hono = new Hono()
   .route("/v1/chat/completions", copilot);
 
 const port = Number(process.env.PORT ?? 6229);
+
 Bun.serve({
   fetch: app.fetch,
   port,
