@@ -1,9 +1,22 @@
 import { Hono } from "hono";
 import { copilot } from "./copilot";
+import { cors } from "hono/cors";
 
 export const app: Hono = new Hono()
   //
+  .use(cors())
   .route("/chat/completions", copilot)
   .route("/v1/chat/completions", copilot);
 
 export default app;
+
+if (import.meta.main) {
+  // When the file is executed directly (e.g. via `bunx gh-copilot-proxy`)
+  const port = Number(process.env.PORT ?? 6229);
+  Bun.serve({
+    fetch: app.fetch,
+    port,
+  });
+
+  console.log(`gh-copilot-proxy listening on http://localhost:${port}`);
+}
