@@ -1,6 +1,11 @@
+#!/usr/bin/env node
+
+import "dotenv/config";
+
 import { Hono } from "hono";
 import { copilot } from "./copilot";
 import { cors } from "hono/cors";
+import { serve } from "@hono/node-server";
 
 export const app: Hono = new Hono()
   //
@@ -10,7 +15,7 @@ export const app: Hono = new Hono()
 
 const port = Number(process.env.PORT ?? 6229);
 
-Bun.serve({
+serve({
   fetch: app.fetch,
   port,
 });
