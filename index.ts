@@ -8,15 +8,10 @@ export const app: Hono = new Hono()
   .route("/chat/completions", copilot)
   .route("/v1/chat/completions", copilot);
 
-export default app;
+const port = Number(process.env.PORT ?? 6229);
+Bun.serve({
+  fetch: app.fetch,
+  port,
+});
 
-if (import.meta.main) {
-  // When the file is executed directly (e.g. via `bunx gh-copilot-proxy`)
-  const port = Number(process.env.PORT ?? 6229);
-  Bun.serve({
-    fetch: app.fetch,
-    port,
-  });
-
-  console.log(`gh-copilot-proxy listening on http://localhost:${port}`);
-}
+console.log(`gh-copilot-proxy listening on http://localhost:${port}`);
