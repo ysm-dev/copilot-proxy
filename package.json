@@ -1,6 +1,6 @@
 {
   "name": "gh-copilot-proxy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A proxy for the GitHub Copilot API",
   "author": "ysm-dev",
   "license": "MIT",
@@ -12,7 +12,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun run index.ts",
-    "start": "bun run index.ts"
+    "start": "bun run index.ts",
+    "build": "bun build index.ts --outfile dist/index.js"
   },
   "dependencies": {
     "hono": "^4.7.11"
