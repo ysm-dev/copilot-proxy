@@ -48,9 +48,9 @@ export const copilot = new Hono()
       "o4-mini"
     ]
 
-    if (AZURE_MODELS.includes(model)) {
+    if (AZURE_MODELS.includes(model) && AZURE_BASE_URL && AZURE_API_KEY) {
       return proxy(
-        new Request(`${AZURE_BASE_URL}/openai/deployments/${model}/chat/completions?api-version=2025-01-01-preview`, {
+        new Request(`${AZURE_BASE_URL}/openai/deployments/${model}${pathname}?api-version=2025-01-01-preview`, {
           method: c.req.method,
           headers: {
             accept: "*/*",
