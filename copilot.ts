@@ -50,7 +50,7 @@ export const copilot = new Hono()
 
     if (AZURE_MODELS.includes(model) && AZURE_BASE_URL && AZURE_API_KEY) {
       return proxy(
-        new Request(`${AZURE_BASE_URL}/openai/deployments/${model}${pathname}?api-version=2025-01-01-preview`, {
+        new Request(`${AZURE_BASE_URL}/openai/deployments/${model}/chat/completions?api-version=2025-01-01-preview`, {
           method: c.req.method,
           headers: {
             accept: "*/*",
@@ -59,6 +59,7 @@ export const copilot = new Hono()
           },
           body: JSON.stringify({
             ...body,
+            "max_completion_tokens": 100000
           }),
         })
       );
