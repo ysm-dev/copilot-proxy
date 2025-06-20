@@ -32,7 +32,12 @@ const getCopilotToken = async () => {
 };
 
 export const copilot = new Hono()
-//
+  .get("/", (c) => {
+    return c.json({
+      message: "Copilot API is running",
+      status: "ok",
+    })
+  })
   .all("*", async (c) => {
     const pathname = c.req.path;
     const method = c.req.method;
