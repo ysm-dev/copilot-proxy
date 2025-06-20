@@ -1,6 +1,6 @@
 {
   "name": "gh-copilot-proxy",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A proxy for the GitHub Copilot API",
   "author": "ysm-dev",
   "bin": {
