@@ -59,7 +59,6 @@ export const copilot = new Hono()
           },
           body: JSON.stringify({
             ...body,
-            "max_completion_tokens": 100000
           }),
         })
       );
@@ -68,7 +67,7 @@ export const copilot = new Hono()
     const token = await getCopilotToken()
 
     return proxy(
-      new Request(`https://api.individual.githubcopilot.com${pathname}`, {
+      new Request(`https://api.individual.githubcopilot.com/chat/completions`, {
         method: c.req.method,
         headers: {
           accept: "*/*",
