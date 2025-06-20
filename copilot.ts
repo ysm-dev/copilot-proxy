@@ -59,6 +59,13 @@ export const copilot = new Hono()
           },
           body: JSON.stringify({
             ...body,
+            ...(model === "o3" ? {
+              "max_completion_tokens": body.max_tokens,
+              max_tokens: undefined
+            } : {
+              max_completion_tokens: undefined,
+              max_tokens: body.max_tokens
+            })
           }),
         })
       );
