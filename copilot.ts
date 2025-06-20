@@ -32,7 +32,7 @@ const getCopilotToken = async () => {
 };
 
 export const copilot = new Hono()
-  //
+//
   .all("*", async (c) => {
     const pathname = c.req.path;
     const method = c.req.method;
@@ -45,7 +45,9 @@ export const copilot = new Hono()
 
     const AZURE_MODELS = [
       "o3",
-      "o4-mini"
+      "o4-mini",
+      "gpt-4.1-mini",
+      "gpt-4.1-nano"
     ]
 
     if (AZURE_MODELS.includes(model) && AZURE_BASE_URL && AZURE_API_KEY) {
