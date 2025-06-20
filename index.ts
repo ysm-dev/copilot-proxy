@@ -10,8 +10,7 @@ import { serve } from "@hono/node-server";
 export const app: Hono = new Hono()
   //
   .use(cors())
-  .route("/chat/completions", copilot)
-  .route("/v1/chat/completions", copilot);
+  .route("/", copilot);
 
 const port = Number(process.env.PORT ?? 6229);
 
